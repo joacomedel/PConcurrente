@@ -15,4 +15,12 @@ public abstract class Barco {
     public boolean esEsteBarco(int matricula){
         return this.matricula == matricula;
     }
+    protected int obtenerModulo(){
+        int modulo;
+        modulo = metrosEslora*10; 
+        return modulo;
+    }
+    public void setAlquilado(boolean alquilado) {
+        this.alquilado = alquilado;
+    }
 }

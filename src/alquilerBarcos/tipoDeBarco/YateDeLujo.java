@@ -10,4 +10,8 @@ public class YateDeLujo extends BarcoAMotor {
         this.camarotes = camarotes;
 
     }
+    public int obtenerModulo (){
+        int modulo = super.obtenerModulo()+camarotes;
+        return modulo;
+    } 
 }

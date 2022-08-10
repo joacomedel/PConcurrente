@@ -34,24 +34,9 @@ public class SistemaBarcos {
         colBarcos.add(yateOut);
         return yateOut;
     }
-    public Alquiler newAlquiler (Cliente cliente,int matricula,int posicionAmarre){
-        Barco barco = buscarBarco(matricula);
-        Alquiler alquilerOut = new Alquiler(posicionAmarre, barco);
-        cliente.alquilar(alquilerOut);
+    public Alquiler newAlquiler (Cliente cliente, Barco barco,int posicionAmarre){
+        Alquiler alquilerOut = new Alquiler(posicionAmarre, barco,cliente);
+        colAlquiler.add(alquilerOut);
         return alquilerOut;
-    }
-    private Barco buscarBarco(int matricula) {
-        int size = colBarcos.size();
-        int i = 0;
-        boolean encontrado = false;
-        Barco barco;
-        do {
-            barco = (Barco)colBarcos.get(i);
-            encontrado = barco.esEsteBarco(matricula);
-        } while (0<size && !encontrado);
-        if (encontrado = false) {
-            barco = null;
-        }
-        return barco;
     }
 }

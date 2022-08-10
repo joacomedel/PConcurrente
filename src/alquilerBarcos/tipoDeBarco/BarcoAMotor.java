@@ -7,4 +7,8 @@ public abstract class BarcoAMotor extends Barco {
     protected void incializarBarcoAMotor(int CV) {
         this.CV = CV;
     }
+    public int obtenerModulo (){
+        int modulo = super.obtenerModulo()+CV;
+        return modulo;
+    } 
 }

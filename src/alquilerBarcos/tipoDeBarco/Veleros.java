@@ -11,4 +11,8 @@ public class Veleros extends Barco {
         this.mastiles = mastiles;
 
     }
+    public int obtenerModulo (){
+        int modulo = super.obtenerModulo()+mastiles;
+        return modulo;
+    } 
 }
