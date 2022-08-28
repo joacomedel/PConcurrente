@@ -12,6 +12,12 @@ public abstract class Barco {
         this.metrosEslora = metrosEslora;
         this.fechaFabricacion = fechaFabricacion;
     }
+    public Barco(int matricula,int metrosEslora,Date fechaFabricacion) {
+        this.matricula = matricula;
+        this.metrosEslora = metrosEslora;
+        this.fechaFabricacion = fechaFabricacion;
+    }
+    
     public boolean esEsteBarco(int matricula){
         return this.matricula == matricula;
     }
