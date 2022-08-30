@@ -3,7 +3,7 @@ package TrabajoPractico2.ej6Mio;
 public class Cobro implements Runnable {
     
     private int precioCobro;
-    ClienteSM cliente;
+    private ClienteSM cliente;
     
     public void run() {
         precioCobro = 0;

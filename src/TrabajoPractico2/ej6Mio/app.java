@@ -41,6 +41,7 @@ public class app {
         Cobro cobro = new Cobro(clienteSM);
         Thread hilo = new Thread(cobro, "Hilo De " + clienteSM.getNombre());
         hilo.start();
-        return cobro.getPrecioCobro();
+        int retorna = cobro.getPrecioCobro();
+        return retorna;
     }
 }
