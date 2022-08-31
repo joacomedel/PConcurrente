@@ -9,11 +9,30 @@ public class app {
         ClienteSM cliente1 = cargarCliente("Jose",temp);
         int temp2[] = {5,6,7,8,9};
         ClienteSM cliente2 = cargarCliente("Juan",temp2);
-        System.out.println(Cobrar(cliente1));
-        System.out.println(Cobrar(cliente2));
-        for (int i = 0; i < 50; i++) {
-            System.out.print(i+",");
+        Cobro cobro1 = new Cobro(cliente1);
+        Cobro cobro2 = new Cobro(cliente2);
+        Thread t1 = new Thread(cobro1);
+        Thread t2 = new Thread(cobro2);
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            System.out.println(cobro1.getPrecioCobro());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
+        try {
+            t2.join();
+            System.out.println(cobro2.getPrecioCobro());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        
+                
+
     }
     public static void cargarStock() {
         stock = new ProductoSM[10];
@@ -36,12 +55,5 @@ public class app {
             clienteRetorna.agregarProducto(stock[id[i]]);
         }
         return clienteRetorna;
-    }
-    public static int Cobrar(ClienteSM clienteSM) {
-        Cobro cobro = new Cobro(clienteSM);
-        Thread hilo = new Thread(cobro, "Hilo De " + clienteSM.getNombre());
-        hilo.start();
-        int retorna = cobro.getPrecioCobro();
-        return retorna;
     }
 }
