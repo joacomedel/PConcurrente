@@ -14,7 +14,6 @@ public class MiHilo implements Runnable {
     // Los hilos comienzan a ejecutarse aquí
     public void run() {
         
-        this.multiplicar(i, j);
         System.out.println("Comenzando " + nombreHilo);
         try {
             for (int contar = 0; contar < 10; contar++) {
