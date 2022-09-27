@@ -5,7 +5,7 @@ public class app {
         Imprenta imprenta = new Imprenta(2, 2);
         for (int i = 0; i < 4; i++) {
             imprenta.imprimirTipoA("Impresion A numero : " + i);
-            imprenta.imprimirTipoB("Impresion B numero : " + i);
+            //imprenta.imprimirTipoB("Impresion B numero : " + i);
         }
     }
 }

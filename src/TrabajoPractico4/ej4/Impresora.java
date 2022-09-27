@@ -14,12 +14,8 @@ public class Impresora extends Thread{
         try {
             semOcupado.release();
             semEsperaHoja.acquire();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        } catch (InterruptedException e) {}
     }
-    @Override
     public void run() {
         int i = 0;
         while (i<=2) {
