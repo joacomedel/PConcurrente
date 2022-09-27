@@ -10,22 +10,23 @@ public class Sumador extends Thread {
         this.arreglo = arreglo;
         this.inicio = inicio;
         this.fin = fin;
-        
     }
-    @Override
     public void run() {
         for (int i = inicio; i < fin; i++) {
             acumulador = acumulador + arreglo[i];
         }
-        acumular();
+        acumular(this.acumulador);
     }
     public int getAcumulador() {
         return acumulador;
     }
-    public synchronized void acumular(){
-        Sumador.acumuladorTotal += this.acumulador;
+    public static synchronized void acumular(int acumulador){
+        Sumador.acumuladorTotal += acumulador;
     }
     public static int getAcumuladorTotal() {
         return Sumador.acumuladorTotal;
+    }
+    public static void setAcumuladorTotal(int acumuladorTotal) {
+        Sumador.acumuladorTotal = acumuladorTotal;
     }
 }

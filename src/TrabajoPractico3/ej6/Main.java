@@ -10,7 +10,6 @@ public class Main {
         final int elementosPorHilo = maxElem / cantHilos;
         int[] arreglo = new int[maxElem];
         cargarArreglo(arreglo);
-        System.out.println("termina");
         Sumador[] arregloHilos = new Sumador[cantHilos];
         
         for (int i = 0; i < cantHilos-1; i++) 

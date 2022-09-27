@@ -10,16 +10,16 @@ public abstract class Personaje  {
         pj.recibirDaño((int)((dañoFisico*2)+(dañoMagico*0.5)));
     }
     protected synchronized void  recibirDaño(int daño){
-        System.out.println("Vida Actual : " + vida);
-        System.out.println("RECIBO DAÑO : " + daño);
+        //System.out.println("Vida Actual : " + vida);
+        //System.out.println("RECIBO DAÑO : " + daño);
         vida = vida - daño;
-        System.out.println("Vida Actualizada : " + vida);
+        //System.out.println("Vida Actualizada : " + vida);
     }
     protected synchronized void recibirCuracion(int cantCuracion) {
-        System.out.println("Vida Actual : " + vida);
-        System.out.println("RECIBO CURACION : " + cantCuracion);
+        //System.out.println("Vida Actual : " + vida);
+        //System.out.println("RECIBO CURACION : " + cantCuracion);
         vida += cantCuracion;
-        System.out.println("Vida Actualizada : " + vida);
+        //System.out.println("Vida Actualizada : " + vida);
     }
     public Personaje(int vida , int dañoFisico , int dañoMagico){
         this.vida = vida;
