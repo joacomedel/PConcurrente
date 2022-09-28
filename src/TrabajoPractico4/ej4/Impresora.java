@@ -1,16 +1,24 @@
 package TrabajoPractico4.ej4;
+import java.util.concurrent.Semaphore;
 
 public class Impresora extends Thread {
-    Imprenta imprenta;
-    @Override
+    private String hoja;
+    private Imprenta imprenta;
+
+    public Impresora (Imprenta imprenta) {
+        this.imprenta = imprenta; 
+        
+    }
     public void run() {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 15; i++) {
             try {
-                imprenta.impresoraImprime();
-                Thread.sleep(20);
-                System.out.println("CLAK CLANK CLANKKS");
-            } catch (InterruptedException e) {
+                System.out.println(imprenta.agarrarHoja());
+                imprenta.terminoImprimir();
+            } catch (Exception e) {
+                // TODO: handle exception
             }
         }
     }
+
+
 }
