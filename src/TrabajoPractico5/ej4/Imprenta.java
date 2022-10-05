@@ -32,9 +32,9 @@ public class Imprenta {
     public void agregarHoja(String hoja) throws InterruptedException{
         //semOcupado.acquire();
         //this.hoja = hoja;
-        //mutexBuffer.acquire();
+        mutexBuffer.acquire();
         buffer.add(hoja);
-        //mutexBuffer.release();
+        mutexBuffer.release();
         semBufferHoja.release();
     }
 
