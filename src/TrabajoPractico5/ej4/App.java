@@ -11,6 +11,8 @@ public class App {
         impresora2.start();
         usuario.start();
         usuario2.start();
+
+
         
     }
     
