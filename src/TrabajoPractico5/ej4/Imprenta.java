@@ -37,6 +37,6 @@ public class Imprenta {
         mutexBuffer.release();
         semBufferHoja.release();
     }
-
+    
 
 }
