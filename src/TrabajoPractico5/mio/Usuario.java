@@ -1,4 +1,4 @@
-package TrabajoPractico5.ej4;
+package TrabajoPractico5.mio;
 
 import java.util.concurrent.Semaphore;
 

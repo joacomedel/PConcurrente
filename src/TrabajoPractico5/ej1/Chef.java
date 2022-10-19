@@ -1,4 +1,4 @@
-package TrabajoPractico5.ej5;
+package TrabajoPractico5.ej1;
 
 public class Chef extends Thread{
     Confiteria conf;

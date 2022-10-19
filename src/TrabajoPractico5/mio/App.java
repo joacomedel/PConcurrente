@@ -1,4 +1,4 @@
-package TrabajoPractico5.ej4;
+package TrabajoPractico5.mio;
 
 public class App {
     public static void main(String[] args) {
