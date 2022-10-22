@@ -13,16 +13,14 @@ public class Coche extends Thread{
     }
     @Override
     public void run() {
-
+        cruzar();
     }
     public void cruzar(){
         try {
             if (llegada == 'O') {
-                System.out.println(nombre + " llega por oeste");
                 gestorCruce.llegadaOeste();
             }
             if (llegada == 'N') {
-                System.out.println(nombre + " llega por norte");
                 gestorCruce.llegadaNorte();
             }
         } catch (Exception e) {cruzar();}
