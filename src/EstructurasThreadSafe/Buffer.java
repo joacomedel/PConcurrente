@@ -12,7 +12,6 @@ public class Buffer<E> {
         semBuffer = new Semaphore(0);
         buffer = new LinkedList<E>();
     }
-    
     public  E poll() throws InterruptedException{
         E ped;
         semBuffer.acquire();
@@ -29,7 +28,6 @@ public class Buffer<E> {
     }
     public synchronized E peek (){
         return buffer.peek();
-        
     }
     public synchronized int size (){
         return buffer.size();
