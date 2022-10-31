@@ -1,48 +1,63 @@
 package TrabajoPractico6.ej1;
+
 import java.util.Random;
 
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 import EstructurasThreadSafe.*;
-public class GestionaTrafico{
+
+public class GestionaTrafico {
     Buffer<Integer> bufferNorte;
     Buffer<Integer> bufferSur;
     int autosCruzaron;
     boolean norteCruzan;
-    int autosMax = 10;
-    int cantMinima = 1;
-    public GestionaTrafico(){
+    int autosMax = 5;
+    int autosMin = 1;
+
+    public GestionaTrafico() {
         bufferNorte = new Buffer<Integer>();
         bufferSur = new Buffer<Integer>();
         Random random = new Random();
         norteCruzan = random.nextBoolean();
     }
-    public void entrarAutoSur(int id){
+
+    public synchronized void entrarAutoSur(int id) {
         bufferSur.add(id);
-        System.out.println(id + "entra por el sur");
+        System.out.println(id + " entra por el sur");
     }
-    public void salirAutoNorte(int id) throws InterruptedException{
-        boolean puedenCruzar = false;
-        while (!puedenCruzar) {
-            bufferSur.wait();
-            if (!norteCruzan) {
-                if (bufferSur.peek() == id) {
-                    bufferSur.poll();
-                    System.out.println(id + "cruzando hacia el norte");
-                    autosCruzaron++;
-                    
-                    if (autosCruzaron >= autosMax && bufferSur.size() >= cantMinima)norteCruzan = true;
-                }
-            }
-            
+
+    public synchronized void salirAutoNorte(int id) throws InterruptedException {
+        while (!(!norteCruzan && id == (int) bufferSur.peek()))
+            this.wait();
+
+        bufferSur.poll();
+        autosCruzaron++;
+        System.out.println(id + " sale hacia el norte");
+        if (autosCruzaron > autosMax && bufferNorte.size() >= autosMin) {
+            // los del sur dejan de cruzar hacia el norte , empiezan a cruzar del norte
+            norteCruzan = true;
+            autosCruzaron = 0;
         }
-    }
-    public void entrarAutoNorte(int id){
-        bufferNorte.add(id);
-    }
-    public void salirAutoSur(int id){
+        this.notifyAll();
+    
 
     }
-    
-    
+
+    public synchronized void entrarAutoNorte(int id) {
+        bufferNorte.add(id);
+        System.out.println(id + " entra por el norte");
+    }
+
+    public synchronized void salirAutoSur(int id) throws InterruptedException {
+        while (!(norteCruzan && id == (int) bufferNorte.peek()))
+            this.wait();
+        bufferNorte.poll();
+        autosCruzaron++;
+        System.out.println(id + " sale hacia el sur");
+        if (autosCruzaron > autosMax && bufferNorte.size() >= autosMin) {
+            norteCruzan = false;
+            autosCruzaron = 0;
+        }
+        this.notifyAll();
+
+    }
+
 }

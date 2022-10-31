@@ -12,15 +12,17 @@ public class Auto extends Thread{
         cruzar();
     }
     public void cruzar(){
-        switch (tipo) {
-            case 'S':
-                gestionaTrafico.entrarAutoSur(id);
-                gestionaTrafico.salirAutoNorte(id);
-                break;
-            case 'N':
-                gestionaTrafico.entrarAutoNorte(id);
-                gestionaTrafico.salirAutoSur(id);
-                break;
-        }
+        try {
+            switch (tipo) {
+                case 'S':
+                    gestionaTrafico.entrarAutoSur(id);
+                    gestionaTrafico.salirAutoNorte(id);
+                    break;
+                case 'N':
+                    gestionaTrafico.entrarAutoNorte(id);
+                    gestionaTrafico.salirAutoSur(id);
+                    break;
+            }
+        } catch (Exception e){}
     }
 }
