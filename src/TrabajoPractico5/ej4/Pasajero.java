@@ -11,6 +11,7 @@ public class Pasajero extends Thread {
     public void run() {
         try {
             controlTren.subirse(nombre);
+            controlTren.bajarse(nombre);
         } catch (InterruptedException e) {
         }
     }
