@@ -12,6 +12,9 @@ public class NotificarTemperatura extends Thread {
         Random random = new Random();
         while (true) {
             gestorSala.notificarTemperatura(random.nextInt(11)+25);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {}
         }
         
     }
