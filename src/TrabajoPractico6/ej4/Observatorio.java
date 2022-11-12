@@ -8,7 +8,7 @@ public class Observatorio {
     int cantMantenimiento;
     int cantInvestigadores;
     int cantSilla;
-    int esperaInvestigadores;
+    int esperaInvestigadores; //Prioridad para investigadores
     public Observatorio(){
     }
     public synchronized void entrarVisitante(boolean silla){

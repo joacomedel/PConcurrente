@@ -14,6 +14,7 @@ public class Embotellador extends Thread{
         for (;;) {
         try {
             fabrica.embotellar((random.nextInt(2)));
+            Thread.sleep(40);
         } catch (Exception e) {}
         }
     }

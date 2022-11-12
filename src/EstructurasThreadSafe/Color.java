@@ -2,19 +2,10 @@ package EstructurasThreadSafe;
 
 import java.util.Random;
 
-import javafx.scene.chart.AreaChart;
 
-public class Color {
-    private static final String BLACK = "\033[0;30m";   // BLACK
-    private static final String RED = "\033[0;31m";     // RED
-    private static final String GREEN = "\033[0;32m";   // GREEN
-    private static final String YELLOW = "\033[0;33m";  // YELLOW
-    private static final String BLUE = "\033[0;34m";    // BLUE
-    private static final String PURPLE = "\033[0;35m";  // PURPLE
-    private static final String CYAN = "\033[0;36m";    // CYAN
-    private static final String WHITE = "\033[0;37m";   // WHITE
+public class Color { // WHITE
     private static final String RESET = "\033[0m";
-    private static final String[] arreglo = {BLACK,RED,GREEN,YELLOW,BLUE,PURPLE,CYAN,WHITE};
+    private static final String[] arreglo = {"\033[0;30m","\033[0;31m","\033[0;32m","\033[0;33m","\033[0;34m","\033[0;35m","\033[0;36m","\033[0;37m"};
     public static String getRandomColor() {
         Random random = new Random();
         return arreglo[random.nextInt(7)];
@@ -22,4 +13,30 @@ public class Color {
     public static String reset(){
         return RESET;
     }
+    public static String getBlack() {
+        return arreglo[0];
+    }
+    public static String getRed() {
+        return arreglo[1];
+    }
+    public static String getGreen() {
+        return arreglo[2];
+    }
+    public static String getYellow() {
+        return arreglo[3];
+    }
+    public static String getBlue() {
+        return arreglo[4];
+    }
+    public static String getPurple() {
+        return arreglo[5];
+    }
+    public static String getCyan() {
+        return arreglo[6];
+    }
+    public static String getWhite() {
+        return arreglo[7];
+    }
+
+    
 }

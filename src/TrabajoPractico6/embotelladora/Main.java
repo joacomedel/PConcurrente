@@ -2,7 +2,7 @@ package TrabajoPractico6.embotelladora;
 
 public class Main {
     public static void main(String[] args) {
-        Embotellador[] embotellador = new Embotellador[10];
+        Embotellador[] embotellador = new Embotellador[4];
         Fabrica fabrica = new Fabrica();
         Almacen almacen = new Almacen();
         Empaquetador empaquetador = new Empaquetador(fabrica,almacen);
