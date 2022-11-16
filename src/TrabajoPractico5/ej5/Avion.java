@@ -1,17 +1,26 @@
 package TrabajoPractico5.ej5;
 
+import java.util.Random;
+
 public class Avion extends Thread {
-    int tipo;
     Aereopuerto aereopuerto;
 
-    public Avion (int tipo ,Aereopuerto aereopuerto){
-        this.tipo = tipo;
+    public Avion (Aereopuerto aereopuerto){
         this.aereopuerto = aereopuerto;
     }
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
-        super.run();
+        Random random = new Random();
+        try {
+            if (random.nextBoolean()) {
+                aereopuerto.despegar();
+            }else{
+                aereopuerto.aterrizar();
+            }
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
