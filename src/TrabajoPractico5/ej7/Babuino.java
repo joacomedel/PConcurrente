@@ -12,10 +12,23 @@ public class Babuino extends Thread {
         Random random = new Random();
         try {
             if (random.nextBoolean()) {
-                cuerda.cruzarNorte();
+                cruzarNorteASur();
             }else{
-                cuerda.cruzarSur();
+                cruzarSurANorte();
             }
         } catch (InterruptedException e) {}
+    }
+    public void dormir() throws InterruptedException{
+        Thread.sleep(20);
+    }
+    public void cruzarNorteASur() throws InterruptedException{
+        cuerda.cruzarNorteEntrada();
+        this.dormir();
+        cuerda.cruzarNorteSalida();
+    }
+    public void cruzarSurANorte() throws InterruptedException{
+        cuerda.cruzarSurEntrada();
+        this.dormir();
+        cuerda.cruzarSurSalida();
     }
 }

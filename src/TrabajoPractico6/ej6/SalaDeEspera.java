@@ -34,6 +34,7 @@ public class SalaDeEspera {
             tieneRevista = false;
             revistas++;
             System.out.println(Color.getGreen() +id + " Agarra camilla y deja revista");
+            this.notify();
         }else  System.out.println(Color.getWhite() +id +" Agarra camilla");
         camillas--;
     }
