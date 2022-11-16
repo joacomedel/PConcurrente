@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.text.DefaultEditorKit.PasteAction;
 
+import EstructurasThreadSafe.Color;
 import TrabajoPractico6.ej5.Pastel;
 
 public class Mostrador {
@@ -21,6 +22,7 @@ public class Mostrador {
     public void ponerPastel(Pastel pastel){
         //Horno entra y deja un pastel en la que
         lock.lock();
+        System.out.println(Color.getWhite() + "Horno agrega pastel");
         pasteles.add(pastel);
         condHayPastel.signal();
         //Avisa por las dudas al Empaquetador, que puso un pastel 
@@ -32,8 +34,11 @@ public class Mostrador {
         lock.lock();
         if (pasteles.size() == 0) {
             //Si no hay pasteles espera a que el horno de alguno
+            System.out.println(Color.getBlack() + "No hay pasteles , empaquetador espera");
             condHayPastel.await();
-        }   //Si hay pasteles , entonces no espera nada
+            System.out.println(Color.getBlack() + "Termino de esperar , toma el pastel");
+        }else System.out.println(Color.getBlack() + "Empaquetador toma el pastel sin esperar ");
+        //Si hay pasteles , entonces no espera nada
         pastel = pasteles.poll();
         lock.unlock();
         return pastel;

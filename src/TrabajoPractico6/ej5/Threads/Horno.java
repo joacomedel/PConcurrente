@@ -7,7 +7,7 @@ import TrabajoPractico6.ej5.RecursosCompartidos.Mostrador;
 
 public class Horno extends Thread {
     Mostrador mostrador;
-    int cantPasteles;
+    int cantPasteles = 16;
     char[] tipos = {'A','B','C'};
     public Horno(Mostrador mostrador){
         this.mostrador = mostrador;
@@ -17,6 +17,7 @@ public class Horno extends Thread {
         Random random = new Random();
         for (int i = 0; i < cantPasteles; i++) {
             mostrador.ponerPastel(new Pastel(tipos[random.nextInt(3)]));
+            try {Thread.sleep(10);} catch (InterruptedException e) {}
         }
         
     }

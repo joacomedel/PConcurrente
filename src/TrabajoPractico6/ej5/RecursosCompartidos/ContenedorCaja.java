@@ -1,16 +1,18 @@
 package TrabajoPractico6.ej5.RecursosCompartidos;
 
+
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import EstructurasThreadSafe.Color;
 import TrabajoPractico6.ej5.Pastel;
-import TrabajoPractico6.embotelladora.Caja;
 
 public class ContenedorCaja {
     //recurso compartido entre empaquetadores y brazoAuxiliar
     LinkedList<Pastel> caja = new LinkedList<Pastel>();
-    int pesoMaximo;
+    int pesoMaximo = 500;
     Lock lock = new ReentrantLock(); 
     Condition condCajaValida = lock.newCondition();
     Condition condPuedeRetirar = lock.newCondition();
@@ -25,15 +27,18 @@ public class ContenedorCaja {
             //intenta ponerlo hasta que pueda
             if (hayCaja && !cajaLlena) {
                 if (puedePonerPastel(pastel)) {
+                    System.out.println(Color.getGreen() + "Pongo el pastel en la caja");
                     caja.add(pastel);
                     puedePoner = true;
                 }else{
                     //intenta poner y la caja ya esta llena , avisa al brazoMecanico 
+                    System.out.println(Color.getPurple() + "Intento poner el pastel , pero estaba lleno , avisa");
                     cajaLlena=true;
                     condPuedeRetirar.signalAll();
                 }
             }
             if (!puedePoner) {
+                System.out.println(Color.getRed() + "No pudo poner pastel , espera");
                 condCajaValida.await();
             }
         }
@@ -43,8 +48,11 @@ public class ContenedorCaja {
         LinkedList<Pastel> cajaRetorna;
         lock.lock();
         while (!cajaLlena) {
+            System.out.println(Color.getYellow() + "La caja no esta llena , espera a que se llene");
             condPuedeRetirar.await();
+            System.out.println(Color.getYellow() + "Termino de esperar");
         }
+        System.out.println(Color.getYellow() + "La caja esta llena se la lleva ");
         cajaRetorna = caja;
         hayCaja = false;
         caja = null;
@@ -54,6 +62,7 @@ public class ContenedorCaja {
     }
     public void reponerCaja(){
         lock.lock();
+        System.out.println(Color.getCyan() + "repone la caja");
         hayCaja=true;
         cajaLlena=false;
         caja = new LinkedList<Pastel>();
